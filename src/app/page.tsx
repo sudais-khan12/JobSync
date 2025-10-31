@@ -4,10 +4,7 @@
 import { Button } from "@/components/ui/button";
 import AutoSlider from "@/components/ui/AutoSlider";
 
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import {
   MapPin,
@@ -26,10 +23,6 @@ import {
 } from "lucide-react";
 
 export default function Home() {
-  
-
-    
-
   const stats = [
     { number: "50,000+", label: "Verified Professionals" },
     { number: "10,000+", label: "Trusted Employers" },
@@ -38,118 +31,121 @@ export default function Home() {
   ];
 
   const industries = [
-  {
-    name: "Construction",
-    image: "/images/construction.png",
-    verified: true,
-  },
-  {
-    name: "Education",
-    image: "/images/learning.png",
-    verified: true,
-  },
-  {
-    name: "Energy",
-    image: "/images/energy.png",
-    verified: true,
-  },
-  {
-    name: "Logistics",
-    image: "/images/logistic-company.png",
-    verified: true,
-  },
-  {
-    name: "Healthcare",
-    image: "/images/health.png",
-    verified: true,
-  },
-  {
-    name: "Mining",
-    image: "/images/mining.png",
-    verified: true,
-  },
-];
+    {
+      name: "Construction",
+      image: "/images/construction.png",
+      verified: true,
+    },
+    {
+      name: "Education",
+      image: "/images/learning.png",
+      verified: true,
+    },
+    {
+      name: "Energy",
+      image: "/images/energy.png",
+      verified: true,
+    },
+    {
+      name: "Logistics",
+      image: "/images/logistic-company.png",
+      verified: true,
+    },
+    {
+      name: "Healthcare",
+      image: "/images/health.png",
+      verified: true,
+    },
+    {
+      name: "Mining",
+      image: "/images/mining.png",
+      verified: true,
+    },
+  ];
 
   const features = [
     {
       icon: <FileCheck className="h-8 w-8" />,
       title: "Verified Credentials",
-      description: "Every document is validated for authenticity and expiry with trusted verification partners"
+      description:
+        "Every document is validated for authenticity and expiry with trusted verification partners",
     },
     {
       icon: <Bot className="h-8 w-8" />,
       title: "AI Career Assistant",
-      description: "Generate professional CVs, understand contracts, and get real-time job suggestions"
+      description:
+        "Generate professional CVs, understand contracts, and get real-time job suggestions",
     },
     {
       icon: <Cloud className="h-8 w-8" />,
       title: "User-Owned Data",
-      description: "Your documents stay in your cloud (Google Drive, OneDrive, Box) - we never take ownership"
+      description:
+        "Your documents stay in your cloud (Google Drive, OneDrive, Box) - we never take ownership",
     },
     {
       icon: <Building className="h-8 w-8" />,
       title: "White-Label Flexibility",
-      description: "Agencies and employers can deploy their own branded version of the platform"
-    }
+      description:
+        "Agencies and employers can deploy their own branded version of the platform",
+    },
   ];
 
   const featuredJobs = [
-  {
-    title: "Experienced Plumber",
-    company: "AquaFlow Services",
-    location: "Sydney, NSW",
-    salary: "$75,000 - $95,000/year",
-    type: "Full-time",
-    posted: "2 days ago",
-    image : "/images/plumber.png"
-  },
-  {
-    title: "Commercial Electrician",
-    company: "BrightVolt Ltd.",
-    location: "Melbourne, VIC",
-    salary: "$85,000 - $110,000/year",
-    type: "Full-time",
-    posted: "1 day ago",
-    image : "/images/electrician.png"
-
-  },
-  {
-    title: "Construction Site Manager",
-    company: "UrbanBuild Co.",
-    location: "Brisbane, QLD",
-    salary: "$120,000 - $150,000/year",
-    type: "Full-time",
-    posted: "3 days ago",
-    image : "/images/construction.png"
-  },
-  {
-    title: "Heavy Vehicle Driver – Logistics",
-    company: "TransRoad Logistics",
-    location: "Perth, WA",
-    salary: "$65,000 - $80,000/year",
-    type: "Full-time",
-    posted: "4 days ago",
-    image : "/images/driver.png"
-  },
-  {
-    title: "Senior Painter / Decorator",
-    company: "ColourFinish Pty Ltd",
-    location: "Adelaide, SA",
-    salary: "$55,000 - $70,000/year",
-    type: "Full-time",
-    posted: "5 days ago",
-    image : "/images/painter.png"
-  },
-  {
-    title: "Chef de Partie – Hotel Kitchen",
-    company: "GrandHarbour Hotel & Resorts",
-    location: "Sydney, NSW",
-    salary: "$60,000 - $75,000/year",
-    type: "Full-time",
-    posted: "2 days ago",
-    image : "/images/chef.png"
+    {
+      title: "Experienced Plumber",
+      company: "AquaFlow Services",
+      location: "Sydney, NSW",
+      salary: "$75,000 - $95,000/year",
+      type: "Full-time",
+      posted: "2 days ago",
+      image: "/images/plumber.png",
     },
-];
+    {
+      title: "Commercial Electrician",
+      company: "BrightVolt Ltd.",
+      location: "Melbourne, VIC",
+      salary: "$85,000 - $110,000/year",
+      type: "Full-time",
+      posted: "1 day ago",
+      image: "/images/electrician.png",
+    },
+    {
+      title: "Construction Site Manager",
+      company: "UrbanBuild Co.",
+      location: "Brisbane, QLD",
+      salary: "$120,000 - $150,000/year",
+      type: "Full-time",
+      posted: "3 days ago",
+      image: "/images/construction.png",
+    },
+    {
+      title: "Heavy Vehicle Driver – Logistics",
+      company: "TransRoad Logistics",
+      location: "Perth, WA",
+      salary: "$65,000 - $80,000/year",
+      type: "Full-time",
+      posted: "4 days ago",
+      image: "/images/driver.png",
+    },
+    {
+      title: "Senior Painter / Decorator",
+      company: "ColourFinish Pty Ltd",
+      location: "Adelaide, SA",
+      salary: "$55,000 - $70,000/year",
+      type: "Full-time",
+      posted: "5 days ago",
+      image: "/images/painter.png",
+    },
+    {
+      title: "Chef de Partie – Hotel Kitchen",
+      company: "GrandHarbour Hotel & Resorts",
+      location: "Sydney, NSW",
+      salary: "$60,000 - $75,000/year",
+      type: "Full-time",
+      posted: "2 days ago",
+      image: "/images/chef.png",
+    },
+  ];
   return (
     <main className="min-h-screen bg-white">
       {/* Enhanced Hero Section with Verification Focus */}
@@ -158,13 +154,15 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-[#B260E6]/90 to-[#ED84A5]/80" />
         </div>
-        
+
         {/* Hero Content */}
         <div className="relative z-10 max-w-6xl mx-auto p-6 text-center text-white">
           <div className="mb-8">
             <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6">
               <Shield className="h-5 w-5" />
-              <span className="font-semibold">Australia&apos;s Verified Workforce Platform</span>
+              <span className="font-semibold">
+                Australia&apos;s Verified Workforce Platform
+              </span>
             </div>
           </div>
 
@@ -174,12 +172,14 @@ export default function Home() {
               Credentials Unite
             </span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed">
-            <strong>JobSync</strong> is transforming how Australians work, verify, and connect. 
-            It&apos;s more than a job site — it&apos;s a secure ecosystem that brings{" "}
-            <strong>verified candidates</strong>, <strong>certified qualifications</strong>, 
-            and <strong>trusted employers</strong> together on one powerful platform.
+            <strong>JobSync</strong> is transforming how Australians work,
+            verify, and connect. It&apos;s more than a job site — it&apos;s a
+            secure ecosystem that brings <strong>verified candidates</strong>,{" "}
+            <strong>certified qualifications</strong>, and{" "}
+            <strong>trusted employers</strong> together on one powerful
+            platform.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -195,13 +195,17 @@ export default function Home() {
           <p className="text-lg md:text-xl opacity-90">
             Built in Australia. Trusted globally. Powered by verification.
           </p>
-          
+
           {/* Stats Bar */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto bg-white/20 backdrop-blur-sm rounded-2xl p-8 border border-white/30 mt-12">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold mb-2">{stat.number}</div>
-                <div className="text-sm md:text-base opacity-90">{stat.label}</div>
+                <div className="text-2xl md:text-3xl font-bold mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-sm md:text-base opacity-90">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
@@ -215,45 +219,44 @@ export default function Home() {
             Trusted by Australia&apos;s leading companies and institutions
           </p>
           <AutoSlider>
-  {[
-    {
-      src: "https://www.tailorbrands.com/wp-content/uploads/2020/04/australian-logos-header.webp",
-      alt: "Qantas",
-    },
-    {
-      src: "https://www.tailorbrands.com/wp-content/uploads/2020/04/qantas-vector-logo.webp",
-      alt: "Commonwealth Bank",
-    },
-    {
-      src: "https://www.tailorbrands.com/wp-content/uploads/2020/04/abc-logo.webp",
-      alt: "Woolworths",
-    },
-    {
-      src: "https://www.tailorbrands.com/wp-content/uploads/2020/04/commonwealth-bank-logo.webp",
-      alt: "Telstra",
-    },
-    {
-      src: "https://www.tailorbrands.com/wp-content/uploads/2020/04/Melbourne-logo.webp",
-      alt: "BHP",
-    },
-    {
-      src: "https://www.tailorbrands.com/wp-content/uploads/2020/04/Woolworths-logo.webp",
-      alt: "ANZ Bank",
-    },
-  ].map((logo, index) => (
-    <div
-      key={index}
-      className="flex-[0_0_33%] sm:flex-[0_0_20%] md:flex-[0_0_16.6%] flex justify-center items-center p-4 opacity-60"
-    >
-      <img
-        src={logo.src}
-        alt={logo.alt}
-        className="max-h-12 object-contain"
-      />
-    </div>
-  ))}
-</AutoSlider>
-
+            {[
+              {
+                src: "https://www.tailorbrands.com/wp-content/uploads/2020/04/australian-logos-header.webp",
+                alt: "Qantas",
+              },
+              {
+                src: "https://www.tailorbrands.com/wp-content/uploads/2020/04/qantas-vector-logo.webp",
+                alt: "Commonwealth Bank",
+              },
+              {
+                src: "https://www.tailorbrands.com/wp-content/uploads/2020/04/abc-logo.webp",
+                alt: "Woolworths",
+              },
+              {
+                src: "https://www.tailorbrands.com/wp-content/uploads/2020/04/commonwealth-bank-logo.webp",
+                alt: "Telstra",
+              },
+              {
+                src: "https://www.tailorbrands.com/wp-content/uploads/2020/04/Melbourne-logo.webp",
+                alt: "BHP",
+              },
+              {
+                src: "https://www.tailorbrands.com/wp-content/uploads/2020/04/Woolworths-logo.webp",
+                alt: "ANZ Bank",
+              },
+            ].map((logo, index) => (
+              <div
+                key={index}
+                className="flex-[0_0_33%] sm:flex-[0_0_20%] md:flex-[0_0_16.6%] flex justify-center items-center p-4 opacity-60"
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="max-h-12 object-contain"
+                />
+              </div>
+            ))}
+          </AutoSlider>
         </div>
       </section>
 
@@ -266,38 +269,53 @@ export default function Home() {
               <span className="text-[#B260E6]">Verification Ecosystem</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Today&apos;s workforce deserves more than job listings. It deserves trust, proof, and portability. 
-              JobSync transforms how professionals manage their qualifications and how employers verify them.
+              Today&apos;s workforce deserves more than job listings. It
+              deserves trust, proof, and portability. JobSync transforms how
+              professionals manage their qualifications and how employers verify
+              them.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                Where skills meet validation — a digital passport that proves your readiness for any opportunity, anywhere.
+                Where skills meet validation — a digital passport that proves
+                your readiness for any opportunity, anywhere.
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="h-6 w-6 text-[#ED84A5] mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-gray-900">For professionals</h4>
-                    <p className="text-gray-600">Store, verify, and showcase your qualifications in one secure place.</p>
+                    <h4 className="font-semibold text-gray-900">
+                      For professionals
+                    </h4>
+                    <p className="text-gray-600">
+                      Store, verify, and showcase your qualifications in one
+                      secure place.
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="h-6 w-6 text-[#ED84A5] mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-gray-900">For employers</h4>
-                    <p className="text-gray-600">Access a verified, compliant talent pool — instantly.</p>
+                    <h4 className="font-semibold text-gray-900">
+                      For employers
+                    </h4>
+                    <p className="text-gray-600">
+                      Access a verified, compliant talent pool — instantly.
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="bg-gradient-to-br from-[#B260E6] to-[#ED84A5] rounded-3xl p-8 text-white text-center">
               <div className="text-6xl mb-4">🛡️</div>
-              <h3 className="text-2xl font-bold mb-4">Your Career. Verified. Portable. Trusted.</h3>
+              <h3 className="text-2xl font-bold mb-4">
+                Your Career. Verified. Portable. Trusted.
+              </h3>
               <p className="opacity-90 mb-6">
-                The new standard of professional credibility in Australia&apos;s workforce
+                The new standard of professional credibility in Australia&apos;s
+                workforce
               </p>
               <Button className="bg-white text-[#B260E6] hover:bg-gray-100">
                 Learn More
@@ -315,7 +333,8 @@ export default function Home() {
               How <span className="text-[#ED84A5]">JobSync</span> Works
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Simple steps to build your verified career identity and connect with trusted opportunities
+              Simple steps to build your verified career identity and connect
+              with trusted opportunities
             </p>
           </div>
 
@@ -324,9 +343,12 @@ export default function Home() {
               <div className="w-16 h-16 bg-[#B260E6] rounded-2xl flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
                 1
               </div>
-              <h3 className="text-xl font-semibold mb-4">Create Your Profile</h3>
+              <h3 className="text-xl font-semibold mb-4">
+                Create Your Profile
+              </h3>
               <p className="text-gray-600">
-                Build your verified career identity — complete with education, certificates, and experience.
+                Build your verified career identity — complete with education,
+                certificates, and experience.
               </p>
             </Card>
 
@@ -336,7 +358,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-4">Verify Instantly</h3>
               <p className="text-gray-600">
-                Connect with trusted verification partners to validate your licenses and qualifications.
+                Connect with trusted verification partners to validate your
+                licenses and qualifications.
               </p>
             </Card>
 
@@ -346,7 +369,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-4">Stay Job-Ready</h3>
               <p className="text-gray-600">
-                Automatic expiry tracking and AI reminders keep you compliant and up-to-date.
+                Automatic expiry tracking and AI reminders keep you compliant
+                and up-to-date.
               </p>
             </Card>
 
@@ -354,9 +378,12 @@ export default function Home() {
               <div className="w-16 h-16 bg-[#ED84A5] rounded-2xl flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
                 4
               </div>
-              <h3 className="text-xl font-semibold mb-4">Discover Opportunities</h3>
+              <h3 className="text-xl font-semibold mb-4">
+                Discover Opportunities
+              </h3>
               <p className="text-gray-600">
-                Get matched with roles that align with your verified credentials and industry preferences.
+                Get matched with roles that align with your verified credentials
+                and industry preferences.
               </p>
             </Card>
           </div>
@@ -372,18 +399,27 @@ export default function Home() {
               <span className="text-[#B260E6]">Workforce Revolution</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Unlike typical job sites, JobSync combines compliance, AI assistance, and verified career mobility in one intuitive platform.
+              Unlike typical job sites, JobSync combines compliance, AI
+              assistance, and verified career mobility in one intuitive
+              platform.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 group p-6 text-center">
+              <Card
+                key={index}
+                className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 group p-6 text-center"
+              >
                 <div className="w-12 h-12 bg-gradient-to-r from-[#B260E6] to-[#ED84A5] rounded-xl flex items-center justify-center text-white mx-auto mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {feature.description}
+                </p>
               </Card>
             ))}
           </div>
@@ -406,13 +442,13 @@ export default function Home() {
                     Take Control of Your Career — One Verified Step at a Time
                   </p>
                 </div>
-                
+
                 <div className="space-y-4 mb-8">
                   {[
                     "Store, verify, and renew your qualifications automatically",
                     "Build a professional CV guided by AI — no writing needed",
                     "Access industry-matched job listings across multiple platforms",
-                    "Gain recognition through verified digital badges"
+                    "Gain recognition through verified digital badges",
                   ].map((item, index) => (
                     <div key={index} className="flex items-center space-x-3">
                       <CheckCircle className="h-5 w-5 text-[#ED84A5] flex-shrink-0" />
@@ -445,14 +481,14 @@ export default function Home() {
                     Hire Faster. Stay Compliant. Build Trust.
                   </p>
                 </div>
-                
+
                 <div className="space-y-4 mb-8">
                   {[
                     "Access an ecosystem of pre-verified, job-ready candidates",
                     "Automated credential validation and expiry alerts",
                     "Digital onboarding and compliance tracking",
                     "Branded white-label platforms for agencies",
-                    "Seamless integration with existing HR and recruitment systems"
+                    "Seamless integration with existing HR and recruitment systems",
                   ].map((item, index) => (
                     <div key={index} className="flex items-center space-x-3">
                       <CheckCircle className="h-5 w-5 text-[#B260E6] flex-shrink-0" />
@@ -465,7 +501,10 @@ export default function Home() {
                   <Button className="w-full bg-gradient-to-r from-[#B260E6]/10 to-[#ED84A5]/10 text-black py-6 text-lg hover:bg-gradient-to-r from-[#B260E6]/10 to-[#ED84A5]/10">
                     Request Demo
                   </Button>
-                  <Button variant="outline" className="w-full bg-gradient-to-r from-[#B260E6] to-[#ED84A5] hover:from-[#A050D6] hover:to-[#DD74A5] text-white hover:text-white text-lg">
+                  <Button
+                    variant="outline"
+                    className="w-full bg-gradient-to-r from-[#B260E6] to-[#ED84A5] hover:from-[#A050D6] hover:to-[#DD74A5] text-white hover:text-white text-lg"
+                  >
                     Book a Partner Call
                   </Button>
                 </div>
@@ -480,193 +519,206 @@ export default function Home() {
         <div className="max-w-6xl mx-auto ">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Industries We{" "}
-              <span className="text-[#ED84A5]">Empower</span>
+              Industries We <span className="text-[#ED84A5]">Empower</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              JobSync is built for compliance-driven industries where trust and verification are critical.
+              JobSync is built for compliance-driven industries where trust and
+              verification are critical.
             </p>
           </div>
 
-           <AutoSlider>
-  {industries.map((industry, index) => (
-    <Card
-      key={index}
-      className="flex-[0_0_60%] sm:flex-[0_0_40%] md:flex-[0_0_25%] lg:flex-[0_0_20%] 
+          <AutoSlider>
+            {industries.map((industry, index) => (
+              <Card
+                key={index}
+                className="flex-[0_0_60%] sm:flex-[0_0_40%] md:flex-[0_0_25%] lg:flex-[0_0_20%] 
                  rounded-xl overflow-hidden shadow-lg border-0 mx-3 
                  transition-transform duration-300 hover:scale-105"
-      style={{
-        background: "linear-gradient(135deg, #B260E6 0%, #ED84A5 100%)",
-      }}
-    >
-      <div className="flex flex-col items-center justify-center text-center p-6">
-        {/* Industry Image */}
-        <div className="w-50 h-40 mb-4 rounded-lg overflow-hidden bg-white/20 flex items-center justify-center">
-          <img
-            src={industry.image}
-            alt={industry.name}
-            className="w-full h-full object-cover"
-          />
-        </div>
+                style={{
+                  background:
+                    "linear-gradient(135deg, #B260E6 0%, #ED84A5 100%)",
+                }}
+              >
+                <div className="flex flex-col items-center justify-center text-center p-6">
+                  {/* Industry Image */}
+                  <div className="w-50 h-40 mb-4 rounded-lg overflow-hidden bg-white/20 flex items-center justify-center">
+                    <img
+                      src={industry.image}
+                      alt={industry.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
-        {/* Industry Title */}
-        <h3 className="text-white font-semibold text-lg mb-2">
-          {industry.name}
-        </h3>
+                  {/* Industry Title */}
+                  <h3 className="text-white font-semibold text-lg mb-2">
+                    {industry.name}
+                  </h3>
 
-        {/* Verified Badge */}
-        {industry.verified && (
-          <div className="flex items-center justify-center space-x-1 text-sm text-white/90">
-            <BadgeCheck className="h-4 w-4" />
-            <span>Verified</span>
-          </div>
-        )}
-      </div>
-    </Card>
-  ))}
-</AutoSlider>
-
+                  {/* Verified Badge */}
+                  {industry.verified && (
+                    <div className="flex items-center justify-center space-x-1 text-sm text-white/90">
+                      <BadgeCheck className="h-4 w-4" />
+                      <span>Verified</span>
+                    </div>
+                  )}
+                </div>
+              </Card>
+            ))}
+          </AutoSlider>
 
           <div className="text-center mt-8">
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Whether it&apos;s FIFO mining, hospital staffing, or logistics operations — we help organisations verify, hire, and mobilise talent with confidence.
+              Whether it&apos;s FIFO mining, hospital staffing, or logistics
+              operations — we help organisations verify, hire, and mobilise
+              talent with confidence.
             </p>
           </div>
         </div>
       </section>
-    
-
 
       {/* Featured Jobs with Australian Locations */}
-            <section className="py-24 bg-white">
-              <div className="max-w-6xl mx-auto px-6">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16">
-                  <div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                      Featured <span className="text-[#B260E6]">Job Openings</span>
-                    </h2>
-                    <p className="text-xl text-gray-600">
-                      Latest opportunities across Australian cities and regions
-                    </p>
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Featured <span className="text-[#B260E6]">Job Openings</span>
+              </h2>
+              <p className="text-xl text-gray-600">
+                Latest opportunities across Australian cities and regions
+              </p>
+            </div>
+            <Button
+              variant="outline"
+              className="mt-4 md:mt-0 border-[#B260E6] text-[#B260E6] hover:bg-[#B260E6] hover:text-white"
+            >
+              View All Jobs
+            </Button>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {featuredJobs.map((job, index) => (
+              <Card
+                key={index}
+                className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden"
+              >
+                <div className="relative h-40 overflow-hidden">
+                  <Image
+                    src={job.image}
+                    alt={job.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      {job.posted}
+                    </span>
                   </div>
-                  <Button variant="outline" className="mt-4 md:mt-0 border-[#B260E6] text-[#B260E6] hover:bg-[#B260E6] hover:text-white">
-                    View All Jobs
-                  </Button>
                 </div>
-      
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                  {featuredJobs.map((job, index) => (
-                    <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
-                      <div className="relative h-40 overflow-hidden">
-                        <Image
-                          src={job.image}
-                          alt={job.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <div className="absolute top-4 right-4">
-                          <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                            {job.posted}
-                          </span>
-                        </div>
-                      </div>
-                      
-                      <CardContent className="p-6">
-                        <div className="flex items-start justify-between mb-4">
-                          <div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">{job.title}</h3>
-                            <p className="text-gray-600 font-medium">{job.company}</p>
-                          </div>
-                          
-                        </div>
-      
-                        <div className="space-y-3 mb-4">
-                          <div className="flex items-center text-gray-600">
-                            <MapPin className="h-4 w-4 mr-2 text-[#ED84A5]" />
-                            {job.location}
-                          </div>
-                          <div className="flex items-center text-gray-600">
-                            <DollarSign className="h-4 w-4 mr-2 text-[#ED84A5]" />
-                            {job.salary}
-                          </div>
-                          <div className="flex items-center text-gray-600">
-                            <Clock className="h-4 w-4 mr-2 text-[#ED84A5]" />
-                            {job.type}
-                          </div>
-                        </div>
-      
-                        <Button className="w-full bg-gradient-to-r from-[#B260E6] to-[#ED84A5] hover:from-[#A050D6] hover:to-[#DD74A5] text-white rounded-full">
-                          Apply Now
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  ))}
+
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                        {job.title}
+                      </h3>
+                      <p className="text-gray-600 font-medium">{job.company}</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 mb-4">
+                    <div className="flex items-center text-gray-600">
+                      <MapPin className="h-4 w-4 mr-2 text-[#ED84A5]" />
+                      {job.location}
+                    </div>
+                    <div className="flex items-center text-gray-600">
+                      <DollarSign className="h-4 w-4 mr-2 text-[#ED84A5]" />
+                      {job.salary}
+                    </div>
+                    <div className="flex items-center text-gray-600">
+                      <Clock className="h-4 w-4 mr-2 text-[#ED84A5]" />
+                      {job.type}
+                    </div>
+                  </div>
+
+                  <Button className="w-full bg-gradient-to-r from-[#B260E6] to-[#ED84A5] hover:from-[#A050D6] hover:to-[#DD74A5] text-white rounded-full">
+                    Apply Now
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Testimonial Section with Australian Workers */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Stories from{" "}
+              <span className="text-[#ED84A5]">Australian Workers</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Hear from skilled professionals who found their dream jobs through
+              JobSync
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="border-0 shadow-lg p-8">
+              <div className="flex items-center mb-6">
+                <Image
+                  src="/images/sarah.png"
+                  alt="Sarah Johnson"
+                  width={80}
+                  height={80}
+                  className="rounded-full mr-6"
+                />
+                <div>
+                  <h4 className="text-xl font-bold">Sarah Johnson</h4>
+                  <p className="text-[#B260E6]">Electrician, Melbourne</p>
+                  <div className="flex text-yellow-400 mt-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-current" />
+                    ))}
+                  </div>
                 </div>
               </div>
-            </section>    
-        {/* Testimonial Section with Australian Workers */}
-              <section className="py-24 bg-gray-50">
-                <div className="max-w-6xl mx-auto px-6">
-                  <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                      Stories from <span className="text-[#ED84A5]">Australian Workers</span>
-                    </h2>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                      Hear from skilled professionals who found their dream jobs through JobSync
-                    </p>
-                  </div>
-        
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <Card className="border-0 shadow-lg p-8">
-                      <div className="flex items-center mb-6">
-                        <Image
-                          src="/images/sarah.png"
-                          alt="Sarah Johnson"
-                          width={80}
-                          height={80}
-                          className="rounded-full mr-6"
-                        />
-                        <div>
-                          <h4 className="text-xl font-bold">Sarah Johnson</h4>
-                          <p className="text-[#B260E6]">Electrician, Melbourne</p>
-                          <div className="flex text-yellow-400 mt-1">
-                            {[...Array(5)].map((_, i) => (
-                              <Star key={i} className="h-4 w-4 fill-current" />
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                      <p className="text-gray-600 text-lg italic">
-                        &ldquo;JobSync helped me find a stable electrical job in Melbourne within a week. The platform connected me with reputable companies that value skilled tradespeople.&rdquo;
-                      </p>
-                    </Card>
-        
-                    <Card className="border-0 shadow-lg p-8">
-                      <div className="flex items-center mb-6">
-                        <Image
-                          src="/images/micheal.png"
-                          alt="Michael Chen"
-                          width={80}
-                          height={80}
-                          className="rounded-full mr-6"
-                        />
-                        <div>
-                          <h4 className="text-xl font-bold">Michael Chen</h4>
-                          <p className="text-[#B260E6]">Head Chef, Sydney</p>
-                          <div className="flex text-yellow-400 mt-1">
-                            {[...Array(5)].map((_, i) => (
-                              <Star key={i} className="h-4 w-4 fill-current" />
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                      <p className="text-gray-600 text-lg italic">
-                        &ldquo;After moving to Sydney, JobSync made it easy to connect with top restaurants. I landed my dream chef position at a waterfront restaurant!&rdquo;
-                      </p>
-                    </Card>
+              <p className="text-gray-600 text-lg italic">
+                &ldquo;JobSync helped me find a stable electrical job in
+                Melbourne within a week. The platform connected me with
+                reputable companies that value skilled tradespeople.&rdquo;
+              </p>
+            </Card>
+
+            <Card className="border-0 shadow-lg p-8">
+              <div className="flex items-center mb-6">
+                <Image
+                  src="/images/micheal.png"
+                  alt="Michael Chen"
+                  width={80}
+                  height={80}
+                  className="rounded-full mr-6"
+                />
+                <div>
+                  <h4 className="text-xl font-bold">Michael Chen</h4>
+                  <p className="text-[#B260E6]">Head Chef, Sydney</p>
+                  <div className="flex text-yellow-400 mt-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-current" />
+                    ))}
                   </div>
                 </div>
-              </section>
+              </div>
+              <p className="text-gray-600 text-lg italic">
+                &ldquo;After moving to Sydney, JobSync made it easy to connect
+                with top restaurants. I landed my dream chef position at a
+                waterfront restaurant!&rdquo;
+              </p>
+            </Card>
+          </div>
+        </div>
+      </section>
 
       {/* Data Privacy & Trust */}
       <section className="py-24 bg-gray-50">
@@ -676,15 +728,16 @@ export default function Home() {
             Your Credentials. Your Control.
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Your personal and professional data always belongs to you. 
-            JobSync integrates securely with your existing cloud storage — without ever taking ownership of your documents.
+            Your personal and professional data always belongs to you. JobSync
+            integrates securely with your existing cloud storage — without ever
+            taking ownership of your documents.
           </p>
-          
+
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
               { title: "End-to-end encryption", icon: "🔒" },
               { title: "GDPR & OAIC compliant", icon: "📜" },
-              { title: "Role-based access control", icon: "👤" }
+              { title: "Role-based access control", icon: "👤" },
             ].map((item, index) => (
               <div key={index} className="bg-white rounded-2xl p-6 shadow-lg">
                 <div className="text-2xl mb-3">{item.icon}</div>
@@ -704,13 +757,14 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-[#B260E6]/90 to-[#ED84A5]/90" />
         </div>
-        
+
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             Join the Verified Workforce Revolution
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Be Seen. Be Trusted. Be Ready. JobSync is redefining how the world verifies talent.
+            Be Seen. Be Trusted. Be Ready. JobSync is redefining how the world
+            verifies talent.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-white text-[#B260E6] hover:bg-gray-100 font-semibold px-8 py-4 text-lg rounded-full shadow-lg">

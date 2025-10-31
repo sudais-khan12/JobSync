@@ -1,24 +1,24 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Button } from "./ui/button"
-import { useState } from "react"
-import { 
-  Menu, 
-  X, 
-  User, 
-  Building, 
-  MapPin, 
+import Link from "next/link";
+import { Button } from "./ui/button";
+import { useState } from "react";
+import {
+  Menu,
+  X,
+  User,
+  Building,
+  MapPin,
   Search,
   Bookmark,
   Bell,
-  MessageCircle
-} from "lucide-react"
+  MessageCircle,
+} from "lucide-react";
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isLoggedIn, setIsLoggedIn] = useState(false) // This would come from auth context
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // This would come from auth context
 
   return (
     <header className="w-full bg-white/95 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
@@ -33,7 +33,9 @@ export default function Navbar() {
               <span className="font-bold text-2xl bg-gradient-to-r from-[#B260E6] to-[#ED84A5] bg-clip-text text-transparent">
                 JobSync
               </span>
-              <p className="text-xs text-gray-500 -mt-1 hidden sm:block">Australia</p>
+              <p className="text-xs text-gray-500 -mt-1 hidden sm:block">
+                Australia
+              </p>
             </div>
           </Link>
 
@@ -41,8 +43,16 @@ export default function Navbar() {
           <nav className="hidden lg:flex items-center space-x-1">
             {[
               { href: "/", label: "Home", icon: null },
-              { href: "/jobs", label: "Find Jobs", icon: <Search className="h-4 w-4" /> },
-              { href: "/companies", label: "Companies", icon: <Building className="h-4 w-4" /> },
+              {
+                href: "/jobs",
+                label: "Find Jobs",
+                icon: <Search className="h-4 w-4" />,
+              },
+              {
+                href: "/companies",
+                label: "Companies",
+                icon: <Building className="h-4 w-4" />,
+              },
               { href: "/about", label: "About", icon: null },
               { href: "/contact", label: "Contact", icon: null },
             ].map((item) => (
@@ -51,7 +61,11 @@ export default function Navbar() {
                 href={item.href}
                 className="flex items-center space-x-1 px-4 py-2 text-gray-700 hover:text-[#B260E6] rounded-xl font-medium transition-all duration-200 hover:bg-gray-100 group"
               >
-                {item.icon && <span className="text-[#ED84A5] group-hover:text-[#B260E6]">{item.icon}</span>}
+                {item.icon && (
+                  <span className="text-[#ED84A5] group-hover:text-[#B260E6]">
+                    {item.icon}
+                  </span>
+                )}
                 <span>{item.label}</span>
               </Link>
             ))}
@@ -74,14 +88,26 @@ export default function Navbar() {
             {isLoggedIn ? (
               <>
                 {/* Notification & Messages */}
-                <Button variant="ghost" size="icon" className="relative text-gray-600 hover:text-[#B260E6] hover:bg-gray-100 rounded-xl">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="relative text-gray-600 hover:text-[#B260E6] hover:bg-gray-100 rounded-xl"
+                >
                   <Bell className="h-5 w-5" />
                   <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#ED84A5] rounded-full border-2 border-white"></span>
                 </Button>
-                <Button variant="ghost" size="icon" className="relative text-gray-600 hover:text-[#B260E6] hover:bg-gray-100 rounded-xl">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="relative text-gray-600 hover:text-[#B260E6] hover:bg-gray-100 rounded-xl"
+                >
                   <MessageCircle className="h-5 w-5" />
                 </Button>
-                <Button variant="ghost" size="icon" className="text-gray-600 hover:text-[#B260E6] hover:bg-gray-100 rounded-xl">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-gray-600 hover:text-[#B260E6] hover:bg-gray-100 rounded-xl"
+                >
                   <Bookmark className="h-5 w-5" />
                 </Button>
 
@@ -98,15 +124,15 @@ export default function Navbar() {
               </>
             ) : (
               <>
-                <Link href="/signin">
-                  <Button 
-                    variant="ghost" 
+                <Link href="/auth/login">
+                  <Button
+                    variant="ghost"
                     className="text-gray-700 hover:text-[#B260E6] hover:bg-gray-100 font-medium px-6 py-2 rounded-xl transition-all"
                   >
                     Sign In
                   </Button>
                 </Link>
-                <Link href="/signup">
+                <Link href="/auth/register">
                   <Button className="bg-gradient-to-r from-[#B260E6] to-[#ED84A5] hover:from-[#A050D6] hover:to-[#DD74A5] text-white font-medium px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all">
                     Sign Up Free
                   </Button>
@@ -118,7 +144,11 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <div className="flex lg:hidden items-center space-x-2">
             {/* Mobile Search Icon */}
-            <Button variant="ghost" size="icon" className="text-gray-600 md:hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-gray-600 md:hidden"
+            >
               <Search className="h-5 w-5" />
             </Button>
 
@@ -128,7 +158,11 @@ export default function Navbar() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-600 hover:text-[#B260E6]"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -152,8 +186,16 @@ export default function Navbar() {
           <div className="px-4 pt-2 pb-6 space-y-1">
             {[
               { href: "/", label: "Home", icon: null },
-              { href: "/jobs", label: "Find Jobs", icon: <Search className="h-5 w-5" /> },
-              { href: "/companies", label: "Companies", icon: <Building className="h-5 w-5" /> },
+              {
+                href: "/jobs",
+                label: "Find Jobs",
+                icon: <Search className="h-5 w-5" />,
+              },
+              {
+                href: "/companies",
+                label: "Companies",
+                icon: <Building className="h-5 w-5" />,
+              },
               { href: "/about", label: "About", icon: null },
               { href: "/contact", label: "Contact", icon: null },
             ].map((item) => (
@@ -163,7 +205,9 @@ export default function Navbar() {
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:text-[#B260E6] hover:bg-gray-50 rounded-xl font-medium transition-all duration-200"
               >
-                {item.icon && <span className="text-[#ED84A5]">{item.icon}</span>}
+                {item.icon && (
+                  <span className="text-[#ED84A5]">{item.icon}</span>
+                )}
                 <span>{item.label}</span>
               </Link>
             ))}
@@ -173,13 +217,19 @@ export default function Navbar() {
               {isLoggedIn ? (
                 <>
                   <Link href="/profile" onClick={() => setIsMenuOpen(false)}>
-                    <Button variant="ghost" className="w-full justify-start space-x-3 text-gray-700">
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start space-x-3 text-gray-700"
+                    >
                       <User className="h-5 w-5" />
                       <span>My Profile</span>
                     </Button>
                   </Link>
                   <Link href="/saved" onClick={() => setIsMenuOpen(false)}>
-                    <Button variant="ghost" className="w-full justify-start space-x-3 text-gray-700">
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start space-x-3 text-gray-700"
+                    >
                       <Bookmark className="h-5 w-5" />
                       <span>Saved Jobs</span>
                     </Button>
@@ -187,12 +237,18 @@ export default function Navbar() {
                 </>
               ) : (
                 <>
-                  <Link href="/signin" onClick={() => setIsMenuOpen(false)}>
-                    <Button variant="outline" className="w-full justify-center border-gray-300 text-gray-700">
+                  <Link href="/auth/login" onClick={() => setIsMenuOpen(false)}>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-center border-gray-300 text-gray-700"
+                    >
                       Sign In
                     </Button>
                   </Link>
-                  <Link href="/signup" onClick={() => setIsMenuOpen(false)}>
+                  <Link
+                    href="/auth/register"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     <Button className="w-full justify-center bg-gradient-to-r from-[#B260E6] to-[#ED84A5] hover:from-[#A050D6] hover:to-[#DD74A5] text-white">
                       Sign Up Free
                     </Button>
@@ -212,5 +268,5 @@ export default function Navbar() {
         </div>
       )}
     </header>
-  )
+  );
 }
