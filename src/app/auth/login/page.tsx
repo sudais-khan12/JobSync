@@ -1,38 +1,44 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
-import { Eye, EyeOff, LogIn, ArrowRight, Mail, Lock, CheckCircle, Users, Briefcase, Award, UserCircle, Shield } from "lucide-react"
-import { useState } from "react"
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import {
+  Eye,
+  EyeOff,
+  LogIn,
+  ArrowRight,
+  Mail,
+  Lock,
+  CheckCircle,
+  Users,
+  Briefcase,
+  Award,
+  UserCircle,
+  Shield,
+} from "lucide-react";
+import { useState } from "react";
 
 const loginSchema = z.object({
-  role: z.enum(["user", "admin"], {
-    required_error: "Please select a role",
-  }),
-  email: z
-    .string()
-    .min(1, "Email is required")
-    .email("Invalid email format"),
-  password: z
-    .string()
-    .min(1, "Password is required"),
-})
+  role: z.enum(["user", "admin"] as const),
+  email: z.string().min(1, "Email is required").email("Invalid email format"),
+  password: z.string().min(1, "Password is required"),
+});
 
-type LoginFormData = z.infer<typeof loginSchema>
+type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
-  const router = useRouter()
-  const [showPassword, setShowPassword] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     register,
@@ -45,24 +51,24 @@ export default function LoginPage() {
     defaultValues: {
       role: "user",
     },
-  })
+  });
 
-  const selectedRole = watch("role")
+  const selectedRole = watch("role");
 
   const onSubmit = async (data: LoginFormData) => {
-    setIsSubmitting(true)
-    
+    setIsSubmitting(true);
+
     // Simulate API call delay
     setTimeout(() => {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
       // Redirect based on role
       if (data.role === "admin") {
-        router.push("/dashboard")
+        router.push("/dashboard");
       } else {
-        router.push("/dashboard")
+        router.push("/dashboard");
       }
-    }, 1000)
-  }
+    }, 1000);
+  };
 
   return (
     <div className="flex h-screen w-full overflow-hidden">
@@ -72,7 +78,7 @@ export default function LoginPage() {
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
         </div>
-        
+
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -87,7 +93,10 @@ export default function LoginPage() {
               className="mb-8"
             >
               <div className="flex justify-center mb-6">
-                <Link href="/" className="inline-flex items-center space-x-3 justify-center">
+                <Link
+                  href="/"
+                  className="inline-flex items-center space-x-3 justify-center"
+                >
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm text-white font-bold text-2xl shadow-xl">
                     J
                   </div>
@@ -100,7 +109,8 @@ export default function LoginPage() {
                 Welcome back 👋
               </h1>
               <p className="text-xl opacity-90 leading-relaxed text-center">
-                Sign in to access your Australian career opportunities and verified credentials
+                Sign in to access your Australian career opportunities and
+                verified credentials
               </p>
             </motion.div>
 
@@ -116,7 +126,9 @@ export default function LoginPage() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-lg">50,000+ Jobs</h4>
-                  <p className="text-sm opacity-80">Active opportunities across Australia</p>
+                  <p className="text-sm opacity-80">
+                    Active opportunities across Australia
+                  </p>
                 </div>
               </div>
 
@@ -126,7 +138,9 @@ export default function LoginPage() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-lg">2,000+ Companies</h4>
-                  <p className="text-sm opacity-80">Trusted Australian employers</p>
+                  <p className="text-sm opacity-80">
+                    Trusted Australian employers
+                  </p>
                 </div>
               </div>
 
@@ -135,8 +149,12 @@ export default function LoginPage() {
                   <Award className="h-6 w-6" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-lg">Verified Credentials</h4>
-                  <p className="text-sm opacity-80">Portable qualifications system</p>
+                  <h4 className="font-semibold text-lg">
+                    Verified Credentials
+                  </h4>
+                  <p className="text-sm opacity-80">
+                    Portable qualifications system
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -154,7 +172,10 @@ export default function LoginPage() {
         >
           {/* Mobile Logo */}
           <div className="lg:hidden text-center mb-8 flex justify-center">
-            <Link href="/" className="inline-flex items-center space-x-3 justify-center">
+            <Link
+              href="/"
+              className="inline-flex items-center space-x-3 justify-center"
+            >
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r from-[#B260E6] to-[#ED84A5] text-white font-bold text-xl shadow-lg">
                 J
               </div>
@@ -175,7 +196,9 @@ export default function LoginPage() {
                 <CardTitle className="text-3xl font-bold text-gray-900 mb-2 text-center">
                   Welcome back 👋
                 </CardTitle>
-                <p className="text-gray-600 mt-2 text-center">Sign in to access your dashboard.</p>
+                <p className="text-gray-600 mt-2 text-center">
+                  Sign in to access your dashboard.
+                </p>
               </motion.div>
             </CardHeader>
 
@@ -216,10 +239,7 @@ export default function LoginPage() {
                       <span className="font-medium">Admin</span>
                     </button>
                   </div>
-                  <input
-                    type="hidden"
-                    {...register("role")}
-                  />
+                  <input type="hidden" {...register("role")} />
                   {errors.role && (
                     <p className="text-red-500 text-sm flex items-center gap-1">
                       <span>•</span>
@@ -234,7 +254,10 @@ export default function LoginPage() {
                   transition={{ duration: 0.4, delay: 0.35 }}
                   className="space-y-3"
                 >
-                  <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+                  <Label
+                    htmlFor="email"
+                    className="text-sm font-medium text-gray-700"
+                  >
                     Email Address
                   </Label>
                   <div className="relative">
@@ -266,7 +289,10 @@ export default function LoginPage() {
                   className="space-y-3"
                 >
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="password" className="text-sm font-medium text-gray-700">
+                    <Label
+                      htmlFor="password"
+                      className="text-sm font-medium text-gray-700"
+                    >
                       Password
                     </Label>
                     <Link
@@ -294,7 +320,11 @@ export default function LoginPage() {
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
                     >
-                      {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                      {showPassword ? (
+                        <EyeOff className="h-5 w-5" />
+                      ) : (
+                        <Eye className="h-5 w-5" />
+                      )}
                     </button>
                   </div>
                   {errors.password && (
@@ -357,7 +387,9 @@ export default function LoginPage() {
                   <Separator className="w-full" />
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-card px-3 text-gray-500 font-medium">Or continue with</span>
+                  <span className="bg-card px-3 text-gray-500 font-medium">
+                    Or continue with
+                  </span>
                 </div>
               </motion.div>
 
@@ -400,7 +432,9 @@ export default function LoginPage() {
                 transition={{ duration: 0.4, delay: 0.9 }}
                 className="text-center text-sm pt-2"
               >
-                <span className="text-gray-600">Don&apos;t have an account? </span>
+                <span className="text-gray-600">
+                  Don&apos;t have an account?{" "}
+                </span>
                 <Link
                   href="/auth/register"
                   className="text-[#B260E6] hover:text-[#A050D6] font-semibold transition-colors inline-flex items-center"
@@ -414,5 +448,5 @@ export default function LoginPage() {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }

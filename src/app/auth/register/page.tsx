@@ -29,7 +29,7 @@ import { useState } from "react";
 const registerSchema = z
   .object({
     role: z.enum(["user", "admin"], {
-      required_error: "Please select a role",
+      error: "Please select a role",
     }),
     name: z.string().min(1, "Name is required"),
     email: z.string().min(1, "Email is required").email("Invalid email format"),

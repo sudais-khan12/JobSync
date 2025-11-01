@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { usePathname } from "next/navigation"
-import Footer from "./Footer"
+import { usePathname } from "next/navigation";
+import Footer from "./Footer";
 
 export default function ConditionalFooter() {
-  const pathname = usePathname()
-  const isAuthPage = pathname?.startsWith("/auth")
+  const pathname = usePathname();
+  const isAuthPage = pathname?.startsWith("/auth");
+  const isAdminPage = pathname?.startsWith("/admin");
 
-  if (isAuthPage) {
-    return null
+  if (isAuthPage || isAdminPage) {
+    return null;
   }
 
-  return <Footer />
+  return <Footer />;
 }
-
