@@ -194,7 +194,9 @@ export default function JobsPage() {
           {
             key: "title",
             label: "Title",
-            render: (value) => <span className="font-medium">{String(value)}</span>,
+            render: (value) => (
+              <span className="font-medium">{String(value)}</span>
+            ),
           },
           {
             key: "company",

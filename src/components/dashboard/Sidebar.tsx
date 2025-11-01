@@ -6,10 +6,11 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   LayoutDashboard,
-  Users,
+  User,
+  FileText,
+  Bookmark,
   Briefcase,
   Building2,
-  BarChart3,
   Settings,
   ChevronLeft,
   ChevronRight,
@@ -20,32 +21,37 @@ import { Button } from "@/components/ui/button";
 const navigation = [
   {
     name: "Dashboard",
-    href: "/admin",
+    href: "/user",
     icon: LayoutDashboard,
   },
   {
-    name: "Users",
-    href: "/admin/users",
-    icon: Users,
+    name: "Profile",
+    href: "/user/profile",
+    icon: User,
   },
   {
-    name: "Jobs",
-    href: "/admin/jobs",
+    name: "Applications",
+    href: "/user/applications",
+    icon: FileText,
+  },
+  {
+    name: "Saved Jobs",
+    href: "/user/saved-jobs",
+    icon: Bookmark,
+  },
+  {
+    name: "Browse Jobs",
+    href: "/user/jobs",
     icon: Briefcase,
   },
   {
     name: "Companies",
-    href: "/admin/companies",
+    href: "/user/companies",
     icon: Building2,
   },
   {
-    name: "Analytics",
-    href: "/admin/analytics",
-    icon: BarChart3,
-  },
-  {
     name: "Settings",
-    href: "/admin/settings",
+    href: "/user/settings",
     icon: Settings,
   },
 ];
@@ -86,7 +92,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
         width: isOpen ? 256 : 96, // 256px (w-64) when open, 96px when closed
       }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="fixed left-0 top-0 z-40 h-screen border-r border-border/50 backdrop-blur-md bg-background/80 shadow-xl overflow-hidden"
+      className="fixed left-0 top-0 z-40 h-screen border-r border-border bg-card shadow-lg overflow-hidden"
     >
       <div className="flex h-full flex-col">
         {/* Logo & Toggle Button */}
@@ -95,16 +101,11 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
             <>
               {/* Open state - Logo on left, button on right */}
               <div className="flex flex-1 items-center px-4">
-                <Link href="/" className="flex items-center space-x-3 group">
-                  <motion.div
-                    initial={{ scale: 1 }}
-                    animate={{ scale: 1 }}
-                    whileHover={{ scale: 1.05 }}
-                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-[#B260E6] to-[#ED84A5] text-white font-bold text-lg shadow-lg shrink-0"
-                  >
+                <Link href="/" className="flex items-center space-x-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-[#B260E6] to-[#ED84A5] text-white font-bold text-lg shadow-lg shrink-0">
                     J
-                  </motion.div>
-                  <span className="font-bold text-xl bg-gradient-to-r from-[#B260E6] to-[#ED84A5] bg-clip-text text-transparent whitespace-nowrap transition-opacity group-hover:opacity-80">
+                  </div>
+                  <span className="font-bold text-xl bg-gradient-to-r from-[#B260E6] to-[#ED84A5] bg-clip-text text-transparent whitespace-nowrap">
                     JobSync
                   </span>
                 </Link>
@@ -148,11 +149,11 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
         {/* Navigation */}
         <nav className="flex-1 space-y-1 overflow-y-auto px-2 py-4">
           {navigation.map((item) => {
-            // Dashboard should only be active on exact /admin route
+            // Dashboard should only be active on exact /dashboard route
             // Other routes should be active when pathname starts with their href
             const isActive =
-              item.href === "/admin"
-                ? pathname === "/admin"
+              item.href === "/user"
+                ? pathname === "/user"
                 : pathname === item.href ||
                   pathname.startsWith(item.href + "/");
             const Icon = item.icon;
@@ -162,29 +163,29 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "group relative flex items-center rounded-xl text-sm font-medium transition-all duration-200",
+                  "group relative flex items-center rounded-lg text-sm font-medium transition-all duration-200",
                   isOpen
                     ? "space-x-3 px-3 py-2.5"
                     : "justify-center px-2 py-2.5",
                   isActive
-                    ? "bg-primary/10 text-primary font-semibold shadow-sm"
-                    : "text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground"
+                    ? "bg-gradient-to-r from-[#B260E6]/10 to-[#ED84A5]/10 text-[#B260E6] shadow-sm"
+                    : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
                 )}
                 title={!isOpen ? item.name : undefined}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 rounded-xl bg-primary/10"
+                    className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#B260E6]/10 to-[#ED84A5]/10"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
                 <Icon
                   className={cn(
-                    "h-5 w-5 shrink-0 transition-colors duration-200",
+                    "h-5 w-5 shrink-0",
                     isActive
-                      ? "text-primary"
-                      : "text-muted-foreground group-hover:text-primary"
+                      ? "text-[#B260E6]"
+                      : "text-muted-foreground group-hover:text-accent-foreground"
                   )}
                 />
                 <AnimatePresence>
@@ -216,7 +217,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
                 exit={{ opacity: 0 }}
                 className="rounded-lg bg-muted/50 p-2 text-center text-xs text-muted-foreground"
               >
-                <p className="font-medium">Admin Portal</p>
+                <p className="font-medium">User Portal</p>
                 <p className="mt-0.5 text-[10px]">Version 1.0.0</p>
               </motion.div>
             ) : (

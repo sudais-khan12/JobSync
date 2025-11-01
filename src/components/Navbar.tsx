@@ -127,13 +127,13 @@ export default function Navbar() {
                 <Link href="/auth/login">
                   <Button
                     variant="ghost"
-                    className="text-gray-700 hover:text-[#B260E6] hover:bg-gray-100 font-medium px-6 py-2 rounded-xl transition-all"
+                    className="text-gray-700 hover:text-[#B260E6] hover:bg-gray-100 font-medium px-6 py-2 rounded-xl transition-all cursor-pointer"
                   >
                     Sign In
                   </Button>
                 </Link>
                 <Link href="/auth/register">
-                  <Button className="bg-gradient-to-r from-[#B260E6] to-[#ED84A5] hover:from-[#A050D6] hover:to-[#DD74A5] text-white font-medium px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                  <Button className="cursor-pointer bg-gradient-to-r from-[#B260E6] to-[#ED84A5] hover:from-[#A050D6] hover:to-[#DD74A5] text-white font-medium px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all">
                     Sign Up Free
                   </Button>
                 </Link>
