@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 import {
   Table,
   TableBody,
@@ -8,33 +8,33 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Search, Edit, Trash2, MoreHorizontal } from "lucide-react"
+} from "@/components/ui/table";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Search, Edit, Trash2, MoreHorizontal } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
 interface Column {
-  key: string
-  label: string
-  render?: (value: any, row: any) => React.ReactNode
+  key: string;
+  label: string;
+  render?: (value: unknown, row: unknown) => React.ReactNode;
 }
 
 interface DataTableProps {
-  data: any[]
-  columns: Column[]
-  searchable?: boolean
-  searchPlaceholder?: string
-  onEdit?: (row: any) => void
-  onDelete?: (row: any) => void
-  actions?: boolean
-  editLabel?: string
+  data: unknown[];
+  columns: Column[];
+  searchable?: boolean;
+  searchPlaceholder?: string;
+  onEdit?: (row: unknown) => void;
+  onDelete?: (row: unknown) => void;
+  actions?: boolean;
+  editLabel?: string;
 }
 
 export default function DataTable({
@@ -47,19 +47,19 @@ export default function DataTable({
   actions = true,
   editLabel = "Edit",
 }: DataTableProps) {
-  const [searchQuery, setSearchQuery] = useState("")
+  const [searchQuery, setSearchQuery] = useState("");
 
   const filteredData = searchable
     ? data.filter((row) =>
         columns.some((col) => {
-          const value = row[col.key]
+          const value = row[col.key];
           return value
             ?.toString()
             .toLowerCase()
-            .includes(searchQuery.toLowerCase())
+            .includes(searchQuery.toLowerCase());
         })
       )
-    : data
+    : data;
 
   return (
     <div className="space-y-4">
@@ -145,6 +145,5 @@ export default function DataTable({
         </Table>
       </div>
     </div>
-  )
+  );
 }
-

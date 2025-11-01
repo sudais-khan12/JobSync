@@ -14,7 +14,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Save, User, Bell, Shield, Moon, Sun } from "lucide-react";
+import {
+  Save,
+  User,
+  Bell,
+  Shield,
+  Moon,
+  Sun,
+  Settings as SettingsIcon,
+} from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function SettingsPage() {
@@ -26,12 +34,24 @@ export default function SettingsPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
-        <p className="text-muted-foreground mt-1">
-          Manage your account settings and preferences.
-        </p>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="flex items-center gap-3 pb-2"
+      >
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-[#B260E6]/10 to-[#ED84A5]/10">
+          <SettingsIcon className="h-5 w-5 text-primary" />
+        </div>
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">
+            Settings
+          </h1>
+          <p className="text-muted-foreground mt-1 text-sm">
+            Manage your account settings and preferences.
+          </p>
+        </div>
+      </motion.div>
 
       {/* Profile Settings */}
       <DashboardCard
@@ -69,7 +89,7 @@ export default function SettingsPage() {
             />
           </div>
           <div className="flex justify-end">
-            <Button className="bg-gradient-to-r from-[#B260E6] to-[#ED84A5] hover:from-[#A050D6] hover:to-[#DD74A5]">
+            <Button className="bg-gradient-to-r from-[#B260E6] to-[#ED84A5] hover:from-[#A050D6] hover:to-[#DD74A5] rounded-xl shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
               <Save className="mr-2 h-4 w-4" />
               Save Changes
             </Button>
@@ -184,7 +204,12 @@ export default function SettingsPage() {
             />
           </div>
           <div className="flex justify-end">
-            <Button variant="outline">Update Password</Button>
+            <Button
+              variant="outline"
+              className="rounded-xl transition-transform duration-200 hover:scale-[1.02]"
+            >
+              Update Password
+            </Button>
           </div>
         </div>
       </DashboardCard>
@@ -205,7 +230,12 @@ export default function SettingsPage() {
                 Permanently delete your admin account and all associated data
               </p>
             </div>
-            <Button variant="destructive">Delete Account</Button>
+            <Button
+              variant="destructive"
+              className="rounded-xl transition-transform duration-200 hover:scale-[1.02]"
+            >
+              Delete Account
+            </Button>
           </div>
         </CardContent>
       </Card>

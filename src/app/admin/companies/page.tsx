@@ -1,8 +1,10 @@
-"use client"
+"use client";
 
-import DataTable from "@/components/admin/DataTable"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import DataTable from "@/components/admin/DataTable";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Building2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 // Mock data
 const companies = [
@@ -70,23 +72,35 @@ const companies = [
     totalJobs: 0,
     location: "Hobart, TAS",
   },
-]
+];
 
 export default function CompaniesPage() {
   const handleViewProfile = (company: unknown) => {
-    console.log("View profile:", company)
+    console.log("View profile:", company);
     // Navigate to company detail page
-  }
+  };
 
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Companies</h1>
-        <p className="text-muted-foreground mt-1">
-          Manage all registered companies and their verification status.
-        </p>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="flex items-center gap-3 pb-2"
+      >
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-[#B260E6]/10 to-[#ED84A5]/10">
+          <Building2 className="h-5 w-5 text-primary" />
+        </div>
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">
+            Companies
+          </h1>
+          <p className="text-muted-foreground mt-1 text-sm">
+            Manage all registered companies and their verification status.
+          </p>
+        </div>
+      </motion.div>
 
       {/* Companies Table */}
       <DataTable
@@ -96,13 +110,15 @@ export default function CompaniesPage() {
             key: "name",
             label: "Company Name",
             render: (value) => (
-              <span className="font-medium text-foreground">{value}</span>
+              <span className="font-medium text-foreground">
+                {String(value)}
+              </span>
             ),
           },
           {
             key: "industry",
             label: "Industry",
-            render: (value) => <Badge variant="outline">{value}</Badge>,
+            render: (value) => <Badge variant="outline">{String(value)}</Badge>,
           },
           {
             key: "location",
@@ -112,7 +128,7 @@ export default function CompaniesPage() {
             key: "totalJobs",
             label: "Total Jobs",
             render: (value) => (
-              <span className="font-medium">{value} posted</span>
+              <span className="font-medium">{String(value)} posted</span>
             ),
           },
           {
@@ -123,12 +139,12 @@ export default function CompaniesPage() {
                 verified: "default",
                 pending: "secondary",
                 inactive: "outline",
-              } as const
+              } as const;
               return (
                 <Badge variant={variants[value as keyof typeof variants]}>
-                  {value}
+                  {String(value)}
                 </Badge>
-              )
+              );
             },
           },
         ]}
@@ -139,6 +155,5 @@ export default function CompaniesPage() {
         actions={true}
       />
     </div>
-  )
+  );
 }
-

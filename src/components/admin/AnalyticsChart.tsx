@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   LineChart,
@@ -14,22 +14,32 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from "recharts"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { motion } from "framer-motion"
+} from "recharts";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+
+// Define ChartDataInput locally since it's not exported by recharts
+type ChartDataInput = Record<string, unknown>;
 
 interface ChartProps {
-  title: string
-  description?: string
-  data: any[]
-  type: "line" | "bar" | "pie"
-  dataKey: string
-  nameKey?: string
-  colors?: string[]
-  className?: string
+  title: string;
+  description?: string;
+  data: ChartDataInput[];
+  type: "line" | "bar" | "pie";
+  dataKey: string;
+  nameKey?: string;
+  colors?: string[];
+  className?: string;
 }
 
-const COLORS = ["#B260E6", "#ED84A5", "#8B5CF6", "#EC4899", "#A855F7"]
+const COLORS = ["#B260E6", "#ED84A5", "#8B5CF6", "#EC4899", "#A855F7"];
 
 export default function AnalyticsChart({
   title,
@@ -47,12 +57,21 @@ export default function AnalyticsChart({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Card className={className}>
-        <CardHeader>
-          <CardTitle>{title}</CardTitle>
-          {description && <CardDescription>{description}</CardDescription>}
+      <Card
+        className={cn(
+          "bg-card/90 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 rounded-xl border-border/50",
+          className
+        )}
+      >
+        <CardHeader className="px-6 pt-6">
+          <CardTitle className="text-lg font-semibold text-foreground/90">
+            {title}
+          </CardTitle>
+          {description && (
+            <CardDescription className="mt-1.5">{description}</CardDescription>
+          )}
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-6 pb-6">
           <ResponsiveContainer width="100%" height={300}>
             {type === "line" ? (
               <LineChart data={data}>
@@ -97,15 +116,25 @@ export default function AnalyticsChart({
                   cx="50%"
                   cy="50%"
                   labelLine={false}
-                  label={({ name, percent }: any) =>
-                    `${name} ${(percent * 100).toFixed(0)}%`
-                  }
+                  label={(props) => {
+                    const { name, percent } = props as {
+                      name?: string;
+                      percent?: number;
+                    };
+                    return `${name ?? ""} ${(percent
+                      ? percent * 100
+                      : 0
+                    ).toFixed(0)}%`;
+                  }}
                   outerRadius={100}
                   fill="#8884d8"
                   dataKey={dataKey}
                 >
                   {data.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={colors[index % colors.length]}
+                    />
                   ))}
                 </Pie>
                 <Tooltip
@@ -121,6 +150,5 @@ export default function AnalyticsChart({
         </CardContent>
       </Card>
     </motion.div>
-  )
+  );
 }
-

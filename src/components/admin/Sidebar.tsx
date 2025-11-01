@@ -86,7 +86,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
         width: isOpen ? 256 : 96, // 256px (w-64) when open, 96px when closed
       }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="fixed left-0 top-0 z-40 h-screen border-r border-border bg-card shadow-lg overflow-hidden"
+      className="fixed left-0 top-0 z-40 h-screen border-r border-border/50 backdrop-blur-md bg-background/80 shadow-xl overflow-hidden"
     >
       <div className="flex h-full flex-col">
         {/* Logo & Toggle Button */}
@@ -95,11 +95,16 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
             <>
               {/* Open state - Logo on left, button on right */}
               <div className="flex flex-1 items-center px-4">
-                <Link href="/admin" className="flex items-center space-x-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-[#B260E6] to-[#ED84A5] text-white font-bold text-lg shadow-lg shrink-0">
+                <Link href="/admin" className="flex items-center space-x-3 group">
+                  <motion.div
+                    initial={{ scale: 1 }}
+                    animate={{ scale: 1 }}
+                    whileHover={{ scale: 1.05 }}
+                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-[#B260E6] to-[#ED84A5] text-white font-bold text-lg shadow-lg shrink-0"
+                  >
                     J
-                  </div>
-                  <span className="font-bold text-xl bg-gradient-to-r from-[#B260E6] to-[#ED84A5] bg-clip-text text-transparent whitespace-nowrap">
+                  </motion.div>
+                  <span className="font-bold text-xl bg-gradient-to-r from-[#B260E6] to-[#ED84A5] bg-clip-text text-transparent whitespace-nowrap transition-opacity group-hover:opacity-80">
                     JobSync
                   </span>
                 </Link>
@@ -148,8 +153,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
             const isActive =
               item.href === "/admin"
                 ? pathname === "/admin"
-                : pathname === item.href ||
-                  pathname.startsWith(item.href + "/");
+                : pathname === item.href || pathname.startsWith(item.href + "/");
             const Icon = item.icon;
 
             return (
@@ -157,29 +161,29 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "group relative flex items-center rounded-lg text-sm font-medium transition-all duration-200",
+                  "group relative flex items-center rounded-xl text-sm font-medium transition-all duration-200",
                   isOpen
                     ? "space-x-3 px-3 py-2.5"
                     : "justify-center px-2 py-2.5",
                   isActive
-                    ? "bg-gradient-to-r from-[#B260E6]/10 to-[#ED84A5]/10 text-[#B260E6] shadow-sm"
-                    : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                    ? "bg-primary/10 text-primary font-semibold shadow-sm"
+                    : "text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground"
                 )}
                 title={!isOpen ? item.name : undefined}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#B260E6]/10 to-[#ED84A5]/10"
+                    className="absolute inset-0 rounded-xl bg-primary/10"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
                 <Icon
                   className={cn(
-                    "h-5 w-5 shrink-0",
+                    "h-5 w-5 shrink-0 transition-colors duration-200",
                     isActive
-                      ? "text-[#B260E6]"
-                      : "text-muted-foreground group-hover:text-accent-foreground"
+                      ? "text-primary"
+                      : "text-muted-foreground group-hover:text-primary"
                   )}
                 />
                 <AnimatePresence>

@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Search, Bell, User, LogOut, Settings } from "lucide-react"
-import { Input } from "@/components/ui/input"
+import { useState } from "react";
+import { Search, Bell, User, LogOut, Settings } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,17 +10,17 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
-  const [searchQuery, setSearchQuery] = useState("")
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60 px-6 shadow-sm">
+    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-border/50 bg-card/95 backdrop-blur-md supports-[backdrop-filter]:bg-card/80 px-6 shadow-sm">
       {/* Search */}
       <div className="relative flex-1 max-w-md">
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -29,7 +29,7 @@ export default function Navbar() {
           placeholder="Search..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="h-9 w-full pl-10 pr-4 rounded-lg bg-background"
+          className="h-9 w-full pl-10 pr-4 rounded-xl bg-background/50 border-border/50 focus:bg-background transition-colors"
         />
       </div>
 
@@ -37,7 +37,11 @@ export default function Navbar() {
         {/* Notifications */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="relative">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative transition-transform duration-200 hover:scale-105"
+            >
               <Bell className="h-5 w-5" />
               <Badge
                 variant="destructive"
@@ -72,8 +76,11 @@ export default function Navbar() {
         {/* Admin Menu */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="relative h-9 w-9 rounded-full">
-              <Avatar className="h-9 w-9">
+            <Button
+              variant="ghost"
+              className="relative h-9 w-9 rounded-full transition-transform duration-200 hover:scale-105 ring-2 ring-transparent hover:ring-primary/20"
+            >
+              <Avatar className="h-9 w-9 ring-2 ring-transparent hover:ring-primary/30 transition-all">
                 <AvatarFallback className="bg-gradient-to-r from-[#B260E6] to-[#ED84A5] text-white font-semibold">
                   AD
                 </AvatarFallback>
@@ -107,6 +114,5 @@ export default function Navbar() {
         </DropdownMenu>
       </div>
     </header>
-  )
+  );
 }
-

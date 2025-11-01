@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Plus, Briefcase } from "lucide-react";
+import { motion } from "framer-motion";
 
 // Mock data
 const jobs = [
@@ -98,16 +99,28 @@ export default function JobsPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Jobs</h1>
-          <p className="text-muted-foreground mt-1">
-            Manage all job listings and postings.
-          </p>
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="flex items-center justify-between pb-2"
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-[#B260E6]/10 to-[#ED84A5]/10">
+            <Briefcase className="h-5 w-5 text-primary" />
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight text-foreground">
+              Jobs
+            </h1>
+            <p className="text-muted-foreground mt-1 text-sm">
+              Manage all job listings and postings.
+            </p>
+          </div>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button className="bg-gradient-to-r from-[#B260E6] to-[#ED84A5] hover:from-[#A050D6] hover:to-[#DD74A5]">
+            <Button className="bg-gradient-to-r from-[#B260E6] to-[#ED84A5] hover:from-[#A050D6] hover:to-[#DD74A5] rounded-xl shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
               <Plus className="mr-2 h-4 w-4" />
               Add Job
             </Button>
@@ -158,17 +171,21 @@ export default function JobsPage() {
               </div>
             </div>
             <DialogFooter>
-              <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
+              <Button
+                variant="outline"
+                onClick={() => setIsDialogOpen(false)}
+                className="rounded-xl transition-transform duration-200 hover:scale-[1.02]"
+              >
                 Cancel
               </Button>
-              <Button className="bg-gradient-to-r from-[#B260E6] to-[#ED84A5]">
+              <Button className="bg-gradient-to-r from-[#B260E6] to-[#ED84A5] rounded-xl shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
                 <Briefcase className="mr-2 h-4 w-4" />
                 Create Job
               </Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
-      </div>
+      </motion.div>
 
       {/* Jobs Table */}
       <DataTable
@@ -177,7 +194,7 @@ export default function JobsPage() {
           {
             key: "title",
             label: "Title",
-            render: (value) => <span className="font-medium">{value}</span>,
+            render: (value) => <span className="font-medium">{String(value)}</span>,
           },
           {
             key: "company",
@@ -186,7 +203,7 @@ export default function JobsPage() {
           {
             key: "type",
             label: "Type",
-            render: (value) => <Badge variant="outline">{value}</Badge>,
+            render: (value) => <Badge variant="outline">{String(value)}</Badge>,
           },
           {
             key: "location",
@@ -203,7 +220,7 @@ export default function JobsPage() {
               } as const;
               return (
                 <Badge variant={variants[value as keyof typeof variants]}>
-                  {value}
+                  {String(value)}
                 </Badge>
               );
             },
@@ -211,7 +228,7 @@ export default function JobsPage() {
           {
             key: "postedDate",
             label: "Posted Date",
-            render: (value) => new Date(value).toLocaleDateString(),
+            render: (value) => new Date(String(value)).toLocaleDateString(),
           },
         ]}
         searchable={true}

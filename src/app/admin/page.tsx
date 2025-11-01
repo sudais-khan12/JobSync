@@ -62,47 +62,73 @@ const jobsData = [
   { name: "Jun", count: 67 },
 ];
 
+import { LayoutDashboard } from "lucide-react";
+import { motion } from "framer-motion";
+
 export default function AdminDashboard() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-        <p className="text-muted-foreground mt-1">
-          Welcome back! Here&apos;s what&apos;s happening with your platform.
-        </p>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="flex items-center gap-3 pb-2"
+      >
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-[#B260E6]/10 to-[#ED84A5]/10">
+          <LayoutDashboard className="h-5 w-5 text-primary" />
+        </div>
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">
+            Dashboard
+          </h1>
+          <p className="text-muted-foreground mt-1 text-sm">
+            Welcome back! Here&apos;s what&apos;s happening with your platform.
+          </p>
+        </div>
+      </motion.div>
 
       {/* Stats Grid */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <StatWidget
-          title="Total Jobs"
-          value="1,234"
-          icon={Briefcase}
-          description="Active job listings"
-          trend={{ value: 12.5, isPositive: true }}
-        />
-        <StatWidget
-          title="Total Users"
-          value="8,456"
-          icon={Users}
-          description="Registered users"
-          trend={{ value: 8.3, isPositive: true }}
-        />
-        <StatWidget
-          title="Active Companies"
-          value="342"
-          icon={Building2}
-          description="Verified companies"
-          trend={{ value: 5.2, isPositive: true }}
-        />
-        <StatWidget
-          title="Pending Approvals"
-          value="23"
-          icon={CheckCircle2}
-          description="Awaiting review"
-          trend={{ value: -2.1, isPositive: false }}
-        />
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {[
+          {
+            title: "Total Jobs",
+            value: "1,234",
+            icon: Briefcase,
+            description: "Active job listings",
+            trend: { value: 12.5, isPositive: true },
+          },
+          {
+            title: "Total Users",
+            value: "8,456",
+            icon: Users,
+            description: "Registered users",
+            trend: { value: 8.3, isPositive: true },
+          },
+          {
+            title: "Active Companies",
+            value: "342",
+            icon: Building2,
+            description: "Verified companies",
+            trend: { value: 5.2, isPositive: true },
+          },
+          {
+            title: "Pending Approvals",
+            value: "23",
+            icon: CheckCircle2,
+            description: "Awaiting review",
+            trend: { value: -2.1, isPositive: false },
+          },
+        ].map((stat, index) => (
+          <motion.div
+            key={stat.title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
+          >
+            <StatWidget {...stat} />
+          </motion.div>
+        ))}
       </div>
 
       {/* Charts Row */}
@@ -120,46 +146,41 @@ export default function AdminDashboard() {
           description="Common administrative tasks"
         >
           <div className="grid grid-cols-2 gap-3">
-            <Button
-              variant="outline"
-              className="h-auto flex-col items-start p-4"
-            >
-              <Users className="mb-2 h-5 w-5" />
-              <span className="font-medium">Manage Users</span>
-              <span className="text-xs text-muted-foreground mt-1">
-                View all users
-              </span>
-            </Button>
-            <Button
-              variant="outline"
-              className="h-auto flex-col items-start p-4"
-            >
-              <Briefcase className="mb-2 h-5 w-5" />
-              <span className="font-medium">Manage Jobs</span>
-              <span className="text-xs text-muted-foreground mt-1">
-                View all jobs
-              </span>
-            </Button>
-            <Button
-              variant="outline"
-              className="h-auto flex-col items-start p-4"
-            >
-              <Building2 className="mb-2 h-5 w-5" />
-              <span className="font-medium">Manage Companies</span>
-              <span className="text-xs text-muted-foreground mt-1">
-                View all companies
-              </span>
-            </Button>
-            <Button
-              variant="outline"
-              className="h-auto flex-col items-start p-4"
-            >
-              <CheckCircle2 className="mb-2 h-5 w-5" />
-              <span className="font-medium">Pending Reviews</span>
-              <span className="text-xs text-muted-foreground mt-1">
-                23 items
-              </span>
-            </Button>
+            {[
+              { icon: Users, label: "Manage Users", desc: "View all users" },
+              { icon: Briefcase, label: "Manage Jobs", desc: "View all jobs" },
+              {
+                icon: Building2,
+                label: "Manage Companies",
+                desc: "View all companies",
+              },
+              {
+                icon: CheckCircle2,
+                label: "Pending Reviews",
+                desc: "23 items",
+              },
+            ].map((action, index) => {
+              const Icon = action.icon;
+              return (
+                <motion.div
+                  key={action.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.2, delay: index * 0.05 }}
+                >
+                  <Button
+                    variant="outline"
+                    className="h-auto w-full flex-col items-start p-4 rounded-xl transition-transform duration-200 hover:scale-[1.02] hover:shadow-md"
+                  >
+                    <Icon className="mb-2 h-5 w-5 text-primary" />
+                    <span className="font-medium">{action.label}</span>
+                    <span className="text-xs text-muted-foreground mt-1">
+                      {action.desc}
+                    </span>
+                  </Button>
+                </motion.div>
+              );
+            })}
           </div>
         </DashboardCard>
       </div>
@@ -182,7 +203,7 @@ export default function AdminDashboard() {
               key: "action",
               label: "Action",
               render: (value, row) => (
-                <span className="font-medium">{value}</span>
+                <span className="font-medium">{String(value)}</span>
               ),
             },
             {
@@ -208,7 +229,7 @@ export default function AdminDashboard() {
                 } as const;
                 return (
                   <Badge variant={variants[value as keyof typeof variants]}>
-                    {value}
+                    {String(value)}
                   </Badge>
                 );
               },
